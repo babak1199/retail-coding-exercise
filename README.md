@@ -1,1 +1,1 @@
-# retail-coding-exercise
+# Retail Coding Exercise
