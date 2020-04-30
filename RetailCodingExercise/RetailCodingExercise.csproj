@@ -5,7 +5,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="App_Data\" />
     <Folder Include="wwwroot\img\cars\" />
   </ItemGroup>
 
