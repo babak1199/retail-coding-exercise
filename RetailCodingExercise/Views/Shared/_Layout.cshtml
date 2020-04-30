@@ -1,0 +1,47 @@
+﻿<!DOCTYPE html>
+<html class="js no-flexbox flexbox-legacy canvas canvastext webgl no-touch geolocation postmessage no-websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients no-cssreflections csstransforms csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers applicationcache svg inlinesvg smil svgclippaths"
+      lang="en">
+<head>
+    <meta content="text/html; charset=utf-8" http-equiv="content-type">
+    <meta charset="utf-8">
+    <title>@ViewData["Title"] - WingTip Toys</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+<body>
+    @* TODO: Commented out this form as I was not sure if it is placed here intentionally. *@
+    @* It was interfering with the search form I placed on the page. *@
+    @*<form action="Cars" id="ctl01" method="post" name="ctl01">*@
+        <header>
+            <div class="content-wrapper">
+                <div class="float-left">
+                    <p class="site-title">
+                        <a href="/" id="A2">
+                            <img id="Logo" src="/img/logo.jpg" style="border-style: None;">
+                        </a>
+                    </p>
+                </div>
+            </div>
+        </header>
+
+        <div id="body">
+            @RenderBody()
+        </div>
+
+        <footer>
+            <div class="content-wrapper">
+                <div class="float-left">
+                    <p>OrderDynamics Coding Exercise</p>
+                </div>
+            </div>
+        </footer>
+    @*</form>*@
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    @{ await Html.RenderPartialAsync("~/Views/Shared/_ValidationScriptsPartial.cshtml"); }
+
+    @* //TODO: could add bundling/minification to reduce the size *@
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @RenderSection("Scripts", required: false)
+</body>
+</html>
