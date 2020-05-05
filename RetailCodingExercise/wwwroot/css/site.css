@@ -226,6 +226,10 @@ ul#menu li a:hover {
     color: #fff;
 }
 
+.featured hgroup.title.inner h1, .featured hgroup.title.inner h2 {
+    color: #000;
+}
+
 .featured p {
     font-size: 1.1em;
 }
