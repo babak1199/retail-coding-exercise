@@ -9,5 +9,10 @@ namespace RetailCodingExercise.Models
         [Required(AllowEmptyStrings = false, ErrorMessage = "Search string cannot be empty")]
         [MinLength(2, ErrorMessage = "Query string must be at least 2 characters long")]
         public string Query { get; set; }
+
+        public bool IsEmpty()
+        {
+            return string.IsNullOrWhiteSpace(Query);
+        }
     }
 }

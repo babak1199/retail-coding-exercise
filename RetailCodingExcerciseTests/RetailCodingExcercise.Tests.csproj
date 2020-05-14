@@ -4,6 +4,14 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
 
     <IsPackable>false</IsPackable>
+
+    <PackageId>RetailCodingExcercise.Tests</PackageId>
+
+    <Product>RetailCodingExcercise.Tests</Product>
+
+    <AssemblyName>RetailCodingExcercise.Tests</AssemblyName>
+
+    <RootNamespace>RetailCodingExcercise.Tests</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>

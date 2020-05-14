@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using RetailCodingExercise.Models;
+using RetailCodingExercise.Models;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -29,16 +30,26 @@ namespace RetailCodingExercise.Controllers
             var cars = _productContext.Products
                 .Where(p => p.Category.CategoryName == _productConfig.IncludedCategory);
 
-            if (ModelState.IsValid)
+            if(!searchModel.IsEmpty() && ModelState.IsValid)
             {
                 cars = cars.Where(p => p.ProductName.Contains(searchModel.Query.ToLower()) || p.Description.Contains(searchModel.Query.ToLower()));
             }
 
-            // TODO: There are better ways to do this
-            ViewData["Title"] = _productConfig.IncludedCategory;
-            ViewData["ImagePath"] = _productConfig.ImagePath;
+            var errors = Enumerable.Empty<string>();
+            if(!searchModel.IsEmpty() && !ModelState.IsValid)
+            {
+                errors = ModelState.Values.SelectMany(v => v.Errors.Select(e => e.ErrorMessage));
+            }
 
-            return View(await cars.ToListAsync());
+            var viewModel = new ProductViewModel
+            {
+                Title = _productConfig.IncludedCategory,
+                ImagePath = _productConfig.ImagePath,
+                Products = await cars.ToListAsync(),
+                ErrorMessages = errors
+            };
+
+            return View(viewModel);
         }
     }
 }
