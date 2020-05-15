@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.30011.22
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RetailCodingExercise", "RetailCodingExercise\RetailCodingExercise.csproj", "{24D9F134-6FCE-4C1C-92A8-495EBCD2AECD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RetailCodingExcerciseTests", "RetailCodingExcerciseTests\RetailCodingExcerciseTests.csproj", "{77EB6D60-D9A1-4D93-B6ED-C45179D7D1C9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RetailCodingExcercise.Tests", "RetailCodingExcerciseTests\RetailCodingExcercise.Tests.csproj", "{77EB6D60-D9A1-4D93-B6ED-C45179D7D1C9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

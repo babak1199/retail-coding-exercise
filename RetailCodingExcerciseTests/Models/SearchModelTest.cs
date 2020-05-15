@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 
-namespace RetailCodingExcerciseTests.Models
+namespace RetailCodingExcercise.Tests.Models
 {
     [TestClass]
     public class SearchModelTest

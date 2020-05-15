@@ -11,10 +11,9 @@ namespace RetailCodingExercise.SearchProducts
             if (request == null) return null;
 
             string query = string.Empty;
-            if (request.Query.TryGetValue("query", out StringValues queryVal) &&
-                !string.IsNullOrEmpty(queryVal.FirstOrDefault()))
+            if (request.Query.TryGetValue("query", out StringValues queryVal))
             {
-                query = queryVal.First();
+                query = queryVal.FirstOrDefault() ?? string.Empty;
             }
 
             return query;

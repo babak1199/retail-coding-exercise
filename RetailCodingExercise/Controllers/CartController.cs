@@ -24,7 +24,7 @@ namespace RetailCodingExercise.Controllers
         [HttpPost]
         public async Task<ActionResult<CartItem>> PostItem([Bind("productId", "cartId")] CartItem cartItem)
         {
-            var foundItem = await GetExistingCartItemExists(cartItem);
+            var foundItem = await GetExistingCartItem(cartItem);
 
             if (foundItem == null)
             {
@@ -52,7 +52,7 @@ namespace RetailCodingExercise.Controllers
                 {
                     return Conflict();
                 }
-                else if (e is DbUpdateConcurrencyException && !(await CartItemExists(foundItem)))
+                else if (e is DbUpdateConcurrencyException && !await CartItemExists(foundItem))
                 {
                     return NotFound();
                 }
@@ -70,7 +70,7 @@ namespace RetailCodingExercise.Controllers
             return NoContent();
         }
 
-        private async Task<CartItem> GetExistingCartItemExists(CartItem cartItem)
+        private async Task<CartItem> GetExistingCartItem(CartItem cartItem)
         {
             return await duplicateCartItem(cartItem, _context).FirstOrDefaultAsync();
         }

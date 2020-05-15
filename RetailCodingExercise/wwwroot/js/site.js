@@ -6,10 +6,12 @@ $(function () {
 
     if (!$form.length) {
         console.error('Search form not found.');
+        return;
     }
 
     if (!$form.validate) {
         console.error('jQuery validation not loaded.');
+        return;
     }
 
     $form.validate({
@@ -38,6 +40,10 @@ $(function () {
             return false;
         }
     });
+
+    if ($form.find('[name="query"]').val()) {
+        $form.valid();
+    }
 });
 
 // --- Cart handling module

@@ -1,11 +1,12 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using RetailCodingExercise.Controllers;
 using RetailCodingExercise.Models;
 using System;
 using System.Threading.Tasks;
 
-namespace RetailCodingExcerciseTests
+namespace RetailCodingExcercise.Tests
 {
     [TestClass]
     public class CartItemTests
@@ -66,8 +67,10 @@ namespace RetailCodingExcerciseTests
 
                 var result = await controller.PostItem(item);
 
-                var changedItem = await context.CartItems.FindAsync("cartItem1");
                 Assert.AreEqual(2, await context.CartItems.CountAsync());
+                Assert.IsInstanceOfType(result.Result, typeof(NoContentResult));
+
+                var changedItem = await context.CartItems.FindAsync("cartItem1");
                 Assert.AreEqual(3, changedItem.Quantity);
             }
         }
@@ -88,7 +91,12 @@ namespace RetailCodingExcerciseTests
                 var result = await controller.PostItem(item);
 
                 Assert.AreEqual(3, await context.CartItems.CountAsync());
-                Assert.AreEqual(1, item.Quantity);
+                Assert.IsInstanceOfType(result.Result, typeof(CreatedAtActionResult));
+
+                var resultValue = (result.Result as CreatedAtActionResult).Value;
+                Assert.IsNotNull(resultValue);
+                Assert.IsInstanceOfType(resultValue, typeof(CartItem));
+                Assert.AreEqual(1, (resultValue as CartItem).Quantity);
             }
         }
     }

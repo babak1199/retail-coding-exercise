@@ -1,5 +1,7 @@
-﻿@model List<Product>
+﻿@model RetailCodingExercise.Models.ProductViewModel
 @using RetailCodingExercise.SearchProducts
+
+@{ ViewData["Title"] = Model.Title; }
 
 <section class="featured">
     <div class="content-wrapper">
@@ -33,14 +35,12 @@
                                 </form>
                             </div>
                             <table>
-                                <tr>
-                                </tr>
-                                @foreach (var product in Model)
+                                @foreach (var product in Model.Products)
                                 {
                                     <tr data-id="@product.ProductId">
                                         <input value="@product.ProductId" hidden />
                                         <td>
-                                            <img border="1" height="75" src="@System.IO.Path.Combine(ViewData["ImagePath"] as string, product.ImagePath)" width="100">
+                                            <img border="1" height="75" src="@System.IO.Path.Combine(Model.ImagePath, product.ImagePath)" width="100">
                                         </td>
                                         <td>
                                             @product.ProductName
@@ -49,7 +49,7 @@
                                                 <strong>Price:</strong>
                                                 $@product.UnitPrice
                                             </span>
-                                            <div><a class="cart-button" data-product-id="@product.ProductId">Add to Cart</a></div>
+                                            <div><a class="cart-button" role="button" data-product-id="@product.ProductId">Add to Cart</a></div>
                                         </td>
                                     </tr>
                                 }
